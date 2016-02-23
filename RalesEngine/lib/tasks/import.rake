@@ -7,8 +7,8 @@ task :import => [:environment] do
   file = "db/rales_engine_data/customers.csv"
 
   CSV.foreach(file, :headers => true) do |row|
-    Customer.create(first_name: row[1].downcase,
-                    last_name: row[2].downcase,
+    Customer.create(first_name: row[1],
+                    last_name: row[2],
                     created_at: row[3],
                     updated_at: row[4]
                    )
@@ -21,7 +21,7 @@ task :import => [:environment] do
   file = "db/rales_engine_data/merchants.csv"
 
   CSV.foreach(file, :headers => true) do |row|
-    Merchant.create(name: row[1].downcase,
+    Merchant.create(name: row[1],
                     created_at: row[2],
                     updated_at: row[3]
                    )
@@ -34,8 +34,8 @@ task :import => [:environment] do
   file = "db/rales_engine_data/items.csv"
 
   CSV.foreach(file, :headers => true) do |row|
-    Item.create(name: row[1].downcase,
-                description: row[2].downcase,
+    Item.create(name: row[1],
+                description: row[2],
                 unit_price: row[3],
                 merchant_id: row[4],
                 created_at: row[5],
@@ -52,7 +52,7 @@ task :import => [:environment] do
   CSV.foreach(file, :headers => true) do |row|
     Transaction.create(invoice_id: row[1],
                        credit_card_number: row[2],
-                       result: row[4].downcase,
+                       result: row[4],
                        created_at: row[5],
                        updated_at: row[6]
                       )
@@ -67,7 +67,7 @@ task :import => [:environment] do
   CSV.foreach(file, :headers => true) do |row|
     Invoice.create(customer_id: row[1],
                    merchant_id: row[2],
-                   status: row[3].downcase,
+                   status: row[3],
                    created_at: row[4],
                    updated_at: row[5]
                   )
