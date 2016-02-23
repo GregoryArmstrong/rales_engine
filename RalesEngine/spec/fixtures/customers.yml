@@ -1,0 +1,11 @@
+customer_1:
+  first_name: "first"
+  last_name: "last"
+  created_at: "2012-03-27 14:54:09 UTC"
+  updated_at: "2012-03-27 14:54:09 UTC"
+
+customer_2:
+  first_name: "second"
+  last_name: "second last"
+  created_at: "2012-03-26 14:54:09 UTC"
+  updated_at: "2012-03-26 14:54:09 UTC"

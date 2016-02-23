@@ -1,4 +1,4 @@
-class Api::V1::MerchantsfindController < Api::ApiController
+class Api::V1::FindMerchantsController < Api::ApiController
 
   respond_to :json
 

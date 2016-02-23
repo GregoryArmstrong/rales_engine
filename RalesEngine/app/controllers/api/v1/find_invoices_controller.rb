@@ -1,4 +1,4 @@
-class Api::V1::InvoicesfindController < Api::ApiController
+class Api::V1::FindInvoicesController < Api::ApiController
 
   respond_to :json
 
