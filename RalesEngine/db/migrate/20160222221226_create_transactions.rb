@@ -4,8 +4,8 @@ class CreateTransactions < ActiveRecord::Migration
       t.integer :invoice_id
       t.integer :credit_card_number, limit: 8
       t.string :result
-      t.string :created_at
-      t.string :updated_at
+      t.datetime :created_at
+      t.datetime :updated_at
     end
   end
 end

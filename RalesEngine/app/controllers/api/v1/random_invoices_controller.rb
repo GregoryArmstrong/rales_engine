@@ -1,4 +1,4 @@
-class Api::V1::InvoicesrandomController < Api::ApiController
+class Api::V1::RandomInvoicesController < Api::ApiController
 
   respond_to :json
 

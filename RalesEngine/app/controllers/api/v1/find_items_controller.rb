@@ -1,4 +1,4 @@
-class Api::V1::ItemsfindController < Api::ApiController
+class Api::V1::FindItemsController < Api::ApiController
 
   respond_to :json
 
