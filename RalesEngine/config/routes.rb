@@ -31,7 +31,9 @@ Rails.application.routes.draw do
         resources :favorite_customer, only: [:index], :controller => 'merchants/favorite_customer'
         resources :customers_with_pending_invoices, only: [:index], :controller => 'merchants/customers_with_pending_invoices'
       end
-      resources :transactions, only: [:index, :show]
+      resources :transactions, only: [:index, :show] do
+        resources :invoices, only: [:index], :controller => 'transactions/invoices'
+      end
       resources :customers, only: [:index, :show] do
         resources :invoices, only: [:index], :controller => 'customers/invoices'
         resources :transactions, only: [:index], :controller => 'customers/transactions'
