@@ -7,11 +7,11 @@ RSpec.describe Api::V1::Merchants::ItemsController, type: :controller do
       item_3 = Item.create(name: "Item Ea Voluptatum",
                            description: "Sunt officia eum qui molestiae. Nesciunt quidem cu...",
                            unit_price: 32301,
-                           merchant_id: 1,
+                           merchant_id: 558182687,
                            created_at: "2012-03-27 14:53:59",
                            updated_at: "2012-03-27 14:53:59"
                            )
-      get :index, format: :json, merchant_id: 1
+      get :index, format: :json, merchant_id: 558182687
 
       expect(response.status).to eq(200)
       expect(response.content_type).to eq "application/json"

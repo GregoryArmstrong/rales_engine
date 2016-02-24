@@ -30,7 +30,10 @@ Rails.application.routes.draw do
       end
       resources :transactions, only: [:index, :show]
       resources :customers, only: [:index, :show]
-      resources :items, only: [:index, :show]
+      resources :items, only: [:index, :show] do
+        resources :invoice_items, only: [:index], :controller => 'items/invoice_items'
+        resources :merchants, only: [:index], :controller => 'items/merchants'
+      end
       resources :invoices, only: [:index, :show] do
         resources :transactions, only: [:index], :controller => 'invoices/transactions'
         resources :invoice_items, only: [:index], :controller => 'invoices/invoice_items'
