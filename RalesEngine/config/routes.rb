@@ -6,18 +6,23 @@ Rails.application.routes.draw do
       get '/customers/find', to: 'find_customers#show'
       get '/items/find', to: 'find_items#show'
       get '/invoices/find', to: 'find_invoices#show'
+      get '/invoice_items/find', to: 'find_invoice_items#show'
 
       get '/merchants/find_all', to: 'find_merchants#index'
       get '/transactions/find_all', to: 'find_transactions#index'
       get '/customers/find_all', to: 'find_customers#index'
       get '/items/find_all', to: 'find_items#index'
       get '/invoices/find_all', to: 'find_invoices#index'
+      get '/invoice_items/find_all', to: 'find_invoice_items#index'
+
 
       get '/merchants/random', to: 'random_merchants#show'
       get '/transactions/random', to: 'random_transactions#show'
       get '/customers/random', to: 'random_customers#show'
       get '/items/random', to: 'random_items#show'
       get '/invoices/random', to: 'random_invoices#show'
+      get '/invoice_items/random', to: 'random_invoice_items#show'
+
 
       resources :merchants, only: [:index, :show] do
         resources :items, only: [:index], :controller => 'merchants/items'
@@ -33,6 +38,7 @@ Rails.application.routes.draw do
         resources :customers, only: [:index], :controller => 'invoices/customers'
         resources :merchants, only: [:index], :controller => 'invoices/merchants'
       end
+      resources :invoice_items, only: [:index, :show]
     end
   end
 end

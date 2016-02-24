@@ -10,17 +10,18 @@ RSpec.describe Api::V1::FindTransactionsController, type: :controller do
       expect(response.content_type).to eq "application/json"
 
       body = JSON.parse(response.body)
+      first_transaction = body.first
 
-      expect(body["invoice_id"]).to eq transactions(:transaction_1).invoice_id
-      expect(body["credit_card_number"]).to eq transactions(:transaction_1).credit_card_number
-      expect(body["result"]).to eq transactions(:transaction_1).result
-      expect(body["created_at"]).to eq "2012-03-27T14:54:09.000Z"
-      expect(body["updated_at"]).to eq "2012-03-27T14:54:09.000Z"
-      expect(body["invoice_id"]).to_not eq transactions(:transaction_2).invoice_id
-      expect(body["credit_card_number"]).to_not eq transactions(:transaction_2).credit_card_number
-      expect(body["result"]).to_not eq transactions(:transaction_2).result
-      expect(body["created_at"]).to_not eq "2012-03-26T14:54:09.000Z"
-      expect(body["updated_at"]).to_not eq "2012-03-26T14:54:09.000Z"
+      expect(first_transaction["invoice_id"]).to eq transactions(:transaction_1).invoice_id
+      expect(first_transaction["credit_card_number"]).to eq transactions(:transaction_1).credit_card_number
+      expect(first_transaction["result"]).to eq transactions(:transaction_1).result
+      expect(first_transaction["created_at"]).to eq "2012-03-27T14:54:09.000Z"
+      expect(first_transaction["updated_at"]).to eq "2012-03-27T14:54:09.000Z"
+      expect(first_transaction["invoice_id"]).to_not eq transactions(:transaction_2).invoice_id
+      expect(first_transaction["credit_card_number"]).to_not eq transactions(:transaction_2).credit_card_number
+      expect(first_transaction["result"]).to_not eq transactions(:transaction_2).result
+      expect(first_transaction["created_at"]).to_not eq "2012-03-26T14:54:09.000Z"
+      expect(first_transaction["updated_at"]).to_not eq "2012-03-26T14:54:09.000Z"
     end
 
     it "finds and serves all transactions' json by invoice_id" do
