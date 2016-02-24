@@ -1,0 +1,13 @@
+invoice_1:
+  customer_id: 1
+  merchant_id: 26
+  status: "shipped"
+  created_at: "2012-03-25 09:54:09"
+  updated_at: "2012-03-25 09:54:09"
+
+invoice_2:
+  customer_id: 1000
+  merchant_id: 86
+  status: "shipped"
+  created_at: "2012-03-23 02:58:15"
+  updated_at: "2012-03-23 02:58:15"
