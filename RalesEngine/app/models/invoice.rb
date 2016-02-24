@@ -6,4 +6,9 @@ class Invoice < ActiveRecord::Base
   has_many :items, through: :invoice_items
   has_many :transactions
 
+  scope :successful, -> { joins(:transactions).where("result = 'success'") }
+
+  scope :failed, -> { joins(:transactions).where("result = 'failed'") }
+
+  scope :select_date, ->(date) { where("extract(month from created_at) = ? and extract(day from created_at) = ?", date.month, date.day) }
 end
