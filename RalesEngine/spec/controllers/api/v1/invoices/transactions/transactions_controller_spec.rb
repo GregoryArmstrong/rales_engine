@@ -4,7 +4,7 @@ RSpec.describe Api::V1::Invoices::TransactionsController, type: :controller do
   fixtures :transactions
   describe "#index" do
     it "serves all an invoices' transactions' json" do
-      get :index, format: :json, invoice_id: 1
+      get :index, format: :json, invoice_id: 987942143
 
       expect(response.status).to eq(200)
       expect(response.content_type).to eq "application/json"
