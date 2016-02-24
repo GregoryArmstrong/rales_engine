@@ -19,7 +19,10 @@ Rails.application.routes.draw do
       get '/items/random', to: 'random_items#show'
       get '/invoices/random', to: 'random_invoices#show'
 
-      resources :merchants, only: [:index, :show]
+      resources :merchants, only: [:index, :show] do
+        resources :items, only: [:index], :controller => 'merchants/items'
+        resources :invoices, only: [:index], :controller => 'merchants/invoices'
+      end
       resources :transactions, only: [:index, :show]
       resources :customers, only: [:index, :show]
       resources :items, only: [:index, :show]
