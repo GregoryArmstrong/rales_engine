@@ -4,9 +4,9 @@ RSpec.describe Api::V1::Merchants::InvoicesController, type: :controller do
   fixtures :invoices
   describe "#index" do
     it "serves all a merchants' invoices' json" do
-      get :index, format: :json, merchant_id: 26
-        invoice_3 = Invoice.create(customer_id: 1,
-                                   merchant_id: 26,
+      get :index, format: :json, merchant_id: 558182687
+        invoice_3 = Invoice.create(customer_id: 921093900,
+                                   merchant_id: 558182687,
                                    status: "shipped",
                                    created_at: "2012-03-25 09:54:09",
                                    updated_at: "2012-03-25 09:54:09"
