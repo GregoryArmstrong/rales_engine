@@ -3,13 +3,7 @@ class Api::V1::Customers::TransactionsController < Api::ApiController
   respond_to :json
 
   def index
-    transacts = []
-    invoices = Invoice.where(customer_id: params[:customer_id])
-    invoices.each do |invoice|
-      transacts << invoice.transactions
-      #  unless invoice.transactions.empty?
-    end
-    respond_with transacts
+    respond_with Customer.find_transactions(params)
   end
 
 end

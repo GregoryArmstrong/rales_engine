@@ -5,6 +5,22 @@ class InvoiceItem < ActiveRecord::Base
 
   before_save :set_unit_price
 
+  def self.find_invoice_items(params)
+    where(invoice_id: params[:invoice_id])
+  end
+  
+  def self.find_invoices(params)
+    find(params[:invoice_item_id]).invoice
+  end
+
+  def self.find_items(params)
+    find(params[:invoice_item_id]).item
+  end
+
+  def self.random
+    all.shuffle.first
+  end
+
   def self.find_all_by_item_id(params)
     where(item_id: params[:item_id])
   end

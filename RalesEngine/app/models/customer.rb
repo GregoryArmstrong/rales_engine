@@ -4,6 +4,28 @@ class Customer < ActiveRecord::Base
   has_many :items, through: :invoice_items
   has_many :transactions, through: :invoices
 
+  def self.find_invoices(params)
+    Customer.find(params[:customer_id]).invoices
+  end
+
+  def self.find_transactions(params)
+    transacts = []
+    Invoice.where(customer_id: params[:customer_id]).each do |invoice|
+      transacts << invoice.transactions
+    end
+    transacts
+  end
+
+  def self.favorite_merchant(params)
+    customer = Customer.find(params[:customer_id]).invoices.successful.select("merchant_id").group("merchant_id").count
+    winner = (customer.max_by { |k,v| v })[0]
+    { id: winner, name: Merchant.find(winner).name }
+  end
+
+  def self.random
+    all.shuffle.first
+  end
+
   def self.find_all_by_first_name(params)
     where('LOWER(first_name) = ?', params[:first_name].downcase)
   end

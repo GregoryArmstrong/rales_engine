@@ -35,5 +35,4 @@ class Api::V1::FindInvoicesController < Api::ApiController
       respond_with Invoice.find_by_id(params)
     end
   end
-
 end

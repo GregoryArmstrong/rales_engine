@@ -10,6 +10,26 @@ class Invoice < ActiveRecord::Base
   scope :failed, -> { joins(:transactions).where("result = 'failed'") }
   scope :select_date, ->(date) { where("extract(month from created_at) = ? and extract(day from created_at) = ?", date.month, date.day) }
 
+  def self.find_merchants(params)
+    where(merchant_id: params[:merchant_id])
+  end
+  
+  def self.find_merchant(params)
+    find(params[:invoice_id]).merchant
+  end
+
+  def self.find_items(params)
+    find(params[:invoice_id]).items
+  end
+
+  def self.find_customers(params)
+    find(params[:invoice_id]).customer
+  end
+
+  def self.random
+    all.shuffle.first
+  end
+
   def self.find_all_by_customer_id(params)
     where(customer_id: params[:customer_id])
   end
