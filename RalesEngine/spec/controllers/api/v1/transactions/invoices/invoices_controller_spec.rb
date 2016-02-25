@@ -10,7 +10,13 @@ RSpec.describe Api::V1::Transactions::InvoicesController, type: :controller do
                                  created_at: "2012-03-25 09:54:09",
                                  updated_at: "2012-03-25 09:54:09"
                                  )
-      get :index, format: :json, transaction_id: transactions(:transaction_2).id
+      transaction_3 = Transaction.create(invoice_id: invoice_3.id,
+                                         credit_card_number: 4580251236515201,
+                                         result: 'failed',
+                                         created_at: "2012-03-25 09:54:09",
+                                         updated_at: "2012-03-25 09:54:09"
+                                         )
+      get :index, format: :json, transaction_id: transaction_3.id
 
       expect(response.status).to eq(200)
       expect(response.content_type).to eq "application/json"
