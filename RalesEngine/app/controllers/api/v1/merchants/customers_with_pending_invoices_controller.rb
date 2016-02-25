@@ -6,7 +6,7 @@ class Api::V1::Merchants::CustomersWithPendingInvoicesController < Api::ApiContr
     merchant = Merchant.find(params[:merchant_id])
     invoices = merchant.invoices.failed.uniq
 
-    respond_with invoices.count
+    respond_with invoices
   end
 
 end

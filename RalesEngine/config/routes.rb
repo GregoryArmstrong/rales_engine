@@ -32,7 +32,7 @@ Rails.application.routes.draw do
         resources :customers_with_pending_invoices, only: [:index], :controller => 'merchants/customers_with_pending_invoices'
       end
       resources :transactions, only: [:index, :show] do
-        resources :invoices, only: [:index], :controller => 'transactions/invoices'
+        resources :invoice, only: [:index], :controller => 'transactions/invoices'
       end
       resources :customers, only: [:index, :show] do
         resources :invoices, only: [:index], :controller => 'customers/invoices'
@@ -41,20 +41,20 @@ Rails.application.routes.draw do
       end
       resources :items, only: [:index, :show] do
         resources :invoice_items, only: [:index], :controller => 'items/invoice_items'
-        resources :merchants, only: [:index], :controller => 'items/merchants'
+        resources :merchant, only: [:index], :controller => 'items/merchants'
       end
       resources :invoices, only: [:index, :show] do
         # scope module: 'invoices' do
           resources :transactions, only: [:index], :controller => 'invoices/transactions'
           resources :invoice_items, only: [:index], :controller => 'invoices/invoice_items'
           resources :items, only: [:index], :controller => 'invoices/items'
-          resources :customers, only: [:index], :controller => 'invoices/customers'
-          resources :merchants, only: [:index], :controller => 'invoices/merchants'
+          resources :customer, only: [:index], :controller => 'invoices/customers'
+          resources :merchant, only: [:index], :controller => 'invoices/merchants'
           #scope removes need to add controller specification
       end
       resources :invoice_items, only: [:index, :show] do
-        resources :invoices, only: [:index], :controller => 'invoice_items/invoices'
-        resources :items, only: [:index], :controller => 'invoice_items/items'
+        resources :invoice, only: [:index], :controller => 'invoice_items/invoices'
+        resources :item, only: [:index], :controller => 'invoice_items/items'
       end
     end
   end

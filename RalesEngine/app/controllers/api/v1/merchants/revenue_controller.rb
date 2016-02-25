@@ -13,7 +13,7 @@ class Api::V1::Merchants::RevenueController < Api::ApiController
     revenue = invoice_items.map do |item|
       item.quantity * item.unit_price
     end
-    total = { "revenue" => ((revenue.reduce(:+)).to_f / 100).to_s }
+    total = { "revenue" => revenue.reduce(:+) }
     respond_with total
   end
 
