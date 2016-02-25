@@ -10,8 +10,9 @@ RSpec.describe Api::V1::TransactionsController, type: :controller do
       expect(response.content_type).to eq "application/json"
 
       body = JSON.parse(response.body)
+
       first_transaction = body.first
-      second_transaction = body.last
+      second_transaction = body[1]
 
       expect(first_transaction["invoice_id"]).to eq transactions(:transaction_1).invoice_id
       expect(first_transaction["credit_card_number"]).to eq transactions(:transaction_1).credit_card_number
