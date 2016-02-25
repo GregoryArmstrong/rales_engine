@@ -14,7 +14,7 @@ RSpec.describe Api::V1::FindItemsController, type: :controller do
 
       expect(first_item["name"]).to eq items(:item_1).name
       expect(first_item["description"]).to eq items(:item_1).description
-      expect(first_item["unit_price"]).to eq items(:item_1).unit_price
+      expect(first_item["unit_price"]).to eq items(:item_1).unit_price.to_s
       expect(first_item["merchant_id"]).to eq items(:item_1).merchant_id
       expect(first_item["created_at"]).to eq "2012-03-27T14:53:59.000Z"
       expect(first_item["updated_at"]).to eq "2012-03-27T14:53:59.000Z"
@@ -37,7 +37,7 @@ RSpec.describe Api::V1::FindItemsController, type: :controller do
 
       expect(first_item["name"]).to eq items(:item_1).name
       expect(first_item["description"]).to eq items(:item_1).description
-      expect(first_item["unit_price"]).to eq items(:item_1).unit_price
+      expect(first_item["unit_price"]).to eq items(:item_1).unit_price.to_s
       expect(first_item["merchant_id"]).to eq items(:item_1).merchant_id
       expect(first_item["created_at"]).to eq "2012-03-27T14:53:59.000Z"
       expect(first_item["updated_at"]).to eq "2012-03-27T14:53:59.000Z"
@@ -60,7 +60,7 @@ RSpec.describe Api::V1::FindItemsController, type: :controller do
 
       expect(first_item["name"]).to eq items(:item_1).name
       expect(first_item["description"]).to eq items(:item_1).description
-      expect(first_item["unit_price"]).to eq items(:item_1).unit_price
+      expect(first_item["unit_price"]).to eq items(:item_1).unit_price.to_s
       expect(first_item["merchant_id"]).to eq items(:item_1).merchant_id
       expect(first_item["created_at"]).to eq "2012-03-27T14:53:59.000Z"
       expect(first_item["updated_at"]).to eq "2012-03-27T14:53:59.000Z"
@@ -73,7 +73,7 @@ RSpec.describe Api::V1::FindItemsController, type: :controller do
     end
 
     it "finds and serves all items' json by unit_price" do
-      get :index, format: :json, unit_price: items(:item_1).unit_price
+      get :index, format: :json, unit_price: items(:item_1).unit_price.to_s
 
       expect(response.status).to eq(200)
       expect(response.content_type).to eq "application/json"
@@ -83,7 +83,7 @@ RSpec.describe Api::V1::FindItemsController, type: :controller do
 
       expect(first_item["name"]).to eq items(:item_1).name
       expect(first_item["description"]).to eq items(:item_1).description
-      expect(first_item["unit_price"]).to eq items(:item_1).unit_price
+      expect(first_item["unit_price"]).to eq items(:item_1).unit_price.to_s
       expect(first_item["merchant_id"]).to eq items(:item_1).merchant_id
       expect(first_item["created_at"]).to eq "2012-03-27T14:53:59.000Z"
       expect(first_item["updated_at"]).to eq "2012-03-27T14:53:59.000Z"
@@ -106,7 +106,7 @@ RSpec.describe Api::V1::FindItemsController, type: :controller do
 
       expect(first_item["name"]).to eq items(:item_1).name
       expect(first_item["description"]).to eq items(:item_1).description
-      expect(first_item["unit_price"]).to eq items(:item_1).unit_price
+      expect(first_item["unit_price"]).to eq items(:item_1).unit_price.to_s
       expect(first_item["merchant_id"]).to eq items(:item_1).merchant_id
       expect(first_item["created_at"]).to eq "2012-03-27T14:53:59.000Z"
       expect(first_item["updated_at"]).to eq "2012-03-27T14:53:59.000Z"
@@ -130,7 +130,7 @@ RSpec.describe Api::V1::FindItemsController, type: :controller do
 
       expect(body["name"]).to eq items(:item_1).name
       expect(body["description"]).to eq items(:item_1).description
-      expect(body["unit_price"]).to eq items(:item_1).unit_price
+      expect(body["unit_price"]).to eq items(:item_1).unit_price.to_s
       expect(body["merchant_id"]).to eq items(:item_1).merchant_id
       expect(body["created_at"]).to eq "2012-03-27T14:53:59.000Z"
       expect(body["updated_at"]).to eq "2012-03-27T14:53:59.000Z"
@@ -146,7 +146,7 @@ RSpec.describe Api::V1::FindItemsController, type: :controller do
 
       expect(body["name"]).to eq items(:item_1).name
       expect(body["description"]).to eq items(:item_1).description
-      expect(body["unit_price"]).to eq items(:item_1).unit_price
+      expect(body["unit_price"]).to eq items(:item_1).unit_price.to_s
       expect(body["merchant_id"]).to eq items(:item_1).merchant_id
       expect(body["created_at"]).to eq "2012-03-27T14:53:59.000Z"
       expect(body["updated_at"]).to eq "2012-03-27T14:53:59.000Z"
@@ -162,7 +162,7 @@ RSpec.describe Api::V1::FindItemsController, type: :controller do
 
       expect(body["name"]).to eq items(:item_1).name
       expect(body["description"]).to eq items(:item_1).description
-      expect(body["unit_price"]).to eq items(:item_1).unit_price
+      expect(body["unit_price"]).to eq items(:item_1).unit_price.to_s
       expect(body["merchant_id"]).to eq items(:item_1).merchant_id
       expect(body["created_at"]).to eq "2012-03-27T14:53:59.000Z"
       expect(body["updated_at"]).to eq "2012-03-27T14:53:59.000Z"
@@ -178,7 +178,7 @@ RSpec.describe Api::V1::FindItemsController, type: :controller do
 
       expect(body["name"]).to eq items(:item_1).name
       expect(body["description"]).to eq items(:item_1).description
-      expect(body["unit_price"]).to eq items(:item_1).unit_price
+      expect(body["unit_price"]).to eq items(:item_1).unit_price.to_s
       expect(body["merchant_id"]).to eq items(:item_1).merchant_id
       expect(body["created_at"]).to eq "2012-03-27T14:53:59.000Z"
       expect(body["updated_at"]).to eq "2012-03-27T14:53:59.000Z"
@@ -194,7 +194,7 @@ RSpec.describe Api::V1::FindItemsController, type: :controller do
 
       expect(body["name"]).to eq items(:item_1).name
       expect(body["description"]).to eq items(:item_1).description
-      expect(body["unit_price"]).to eq items(:item_1).unit_price
+      expect(body["unit_price"]).to eq items(:item_1).unit_price.to_s
       expect(body["merchant_id"]).to eq items(:item_1).merchant_id
       expect(body["created_at"]).to eq "2012-03-27T14:53:59.000Z"
       expect(body["updated_at"]).to eq "2012-03-27T14:53:59.000Z"

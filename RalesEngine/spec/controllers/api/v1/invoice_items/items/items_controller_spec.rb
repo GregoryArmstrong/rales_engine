@@ -14,7 +14,7 @@ RSpec.describe Api::V1::InvoiceItems::ItemsController, type: :controller do
 
       expect(body["name"]).to eq items(:item_1).name
       expect(body["description"]).to eq items(:item_1).description
-      expect(body["unit_price"]).to eq items(:item_1).unit_price
+      expect(body["unit_price"]).to eq items(:item_1).unit_price.to_s
       expect(body["merchant_id"]).to eq items(:item_1).merchant_id
       expect(body["created_at"]).to eq "2012-03-27T14:53:59.000Z"
       expect(body["updated_at"]).to eq "2012-03-27T14:53:59.000Z"
