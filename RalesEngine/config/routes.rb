@@ -15,7 +15,6 @@ Rails.application.routes.draw do
       get '/invoices/find_all', to: 'find_invoices#index'
       get '/invoice_items/find_all', to: 'find_invoice_items#index'
 
-
       get '/merchants/random', to: 'random_merchants#show'
       get '/transactions/random', to: 'random_transactions#show'
       get '/customers/random', to: 'random_customers#show'
@@ -23,6 +22,7 @@ Rails.application.routes.draw do
       get '/invoices/random', to: 'random_invoices#show'
       get '/invoice_items/random', to: 'random_invoice_items#show'
 
+      get '/items/most_revenue', to: 'items/most_revenue#index'
 
       resources :merchants, only: [:index, :show] do
         resources :items, only: [:index], :controller => 'merchants/items'
@@ -37,17 +37,20 @@ Rails.application.routes.draw do
       resources :customers, only: [:index, :show] do
         resources :invoices, only: [:index], :controller => 'customers/invoices'
         resources :transactions, only: [:index], :controller => 'customers/transactions'
+        resources :favorite_merchant, only: [:index], :controller => 'customers/favorite_merchant'
       end
       resources :items, only: [:index, :show] do
         resources :invoice_items, only: [:index], :controller => 'items/invoice_items'
         resources :merchants, only: [:index], :controller => 'items/merchants'
       end
       resources :invoices, only: [:index, :show] do
-        resources :transactions, only: [:index], :controller => 'invoices/transactions'
-        resources :invoice_items, only: [:index], :controller => 'invoices/invoice_items'
-        resources :items, only: [:index], :controller => 'invoices/items'
-        resources :customers, only: [:index], :controller => 'invoices/customers'
-        resources :merchants, only: [:index], :controller => 'invoices/merchants'
+        # scope module: 'invoices' do
+          resources :transactions, only: [:index], :controller => 'invoices/transactions'
+          resources :invoice_items, only: [:index], :controller => 'invoices/invoice_items'
+          resources :items, only: [:index], :controller => 'invoices/items'
+          resources :customers, only: [:index], :controller => 'invoices/customers'
+          resources :merchants, only: [:index], :controller => 'invoices/merchants'
+          #scope removes need to add controller specification
       end
       resources :invoice_items, only: [:index, :show] do
         resources :invoices, only: [:index], :controller => 'invoice_items/invoices'
