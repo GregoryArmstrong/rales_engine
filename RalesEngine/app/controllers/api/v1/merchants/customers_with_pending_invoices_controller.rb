@@ -3,10 +3,7 @@ class Api::V1::Merchants::CustomersWithPendingInvoicesController < Api::ApiContr
   respond_to :json
 
   def index
-    merchant = Merchant.find(params[:merchant_id])
-    invoices = merchant.invoices.failed.uniq
-
-    respond_with invoices
+    respond_with Merchant.find_customers_with_pending_invoices(params)
   end
 
 end

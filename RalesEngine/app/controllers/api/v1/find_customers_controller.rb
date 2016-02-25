@@ -3,25 +3,32 @@ class Api::V1::FindCustomersController < Api::ApiController
   respond_to :json
 
   def index
-    respond_with Customer.where('LOWER(first_name) = ?', params[:first_name].downcase) if params[:first_name]
-    respond_with Customer.where('LOWER(last_name) = ?', params[:last_name].downcase) if params[:last_name]
-    respond_with Customer.where(created_at: params[:created_at]) if params[:created_at]
-    respond_with Customer.where(updated_at: params[:updated_at]) if params[:updated_at]
-    respond_with Customer.where(id: params[:id]) if params[:id]
-  end
-
-  def show
-    if params[:last_name]
-      respond_with Customer.find_by('LOWER(last_name) = ?', params[:last_name].downcase)
-    elsif params[:first_name]
-      respond_with Customer.find_by('LOWER(first_name) = ?', params[:first_name].downcase)
-    elsif params[:created_at]
-      respond_with Customer.find_by(created_at: params[:created_at])
-    elsif params[:updated_at]
-      respond_with Customer.find_by(updated_at: params[:updated_at])
-    else
-      respond_with Customer.find(params[:id])
+    case params.first.first
+    when "first_name"
+      respond_with Customer.find_all_by_first_name(params)
+    when "last_name"
+      respond_with Customer.find_all_by_last_name(params)
+    when "created_at"
+      respond_with Customer.find_all_by_created_at(params)
+    when "updated_at"
+      respond_with Customer.find_all_by_updated_at(params)
+    when "id"
+      respond_with Customer.find_all_by_id(params)
     end
   end
 
+  def show
+    case params.first.first
+    when "last_name"
+      respond_with Customer.find_by_last_name(params)
+    when "first_name"
+      respond_with Customer.find_by_first_name(params)
+    when "created_at"
+      respond_with Customer.find_by_created_at(params)
+    when "updated_at"
+      respond_with Customer.find_by_updated_at(params)
+    when "id"
+      respond_with Customer.find(params[:id])
+    end
+  end
 end

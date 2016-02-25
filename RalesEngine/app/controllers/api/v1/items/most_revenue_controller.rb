@@ -3,18 +3,13 @@ class Api::V1::Items::MostRevenueController < Api::ApiController
   respond_to :json
 
   def index
-    invoice_items = InvoiceItem.all
     revenue = {}
-    invoice_items.each do |item|
-      if revenue[item.item_id]
-        revenue[item.item_id] += (item.quantity * item.unit_price)
-      else
-        revenue[item.item_id] = (item.quantity * item.unit_price)
-      end
+    InvoiceItem.all.each do |item|
+      revenue[item.item_id] += (item.quantity * item.unit_price) if revenue[item.item_id]
+      revenue[item.item_id] = (item.quantity * item.unit_price) unless revenue[item.item_id]
     end
-    top_contenders = revenue.max_by(params[:quantity].to_i) { |k,v| v}
-    winners = top_contenders.map do |contender|
-      Item.find(contender[0])
+    winners = revenue.max_by(params[:quantity].to_i) { |k,v| v}.map do |item|
+      Item.find(item[0])
     end
     respond_with winners
   end
